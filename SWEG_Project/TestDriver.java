@@ -20,7 +20,7 @@ public class TestDriver {
 		 
 		while(true) {
 //			int numStudents = 0;
-			if(false) {
+			if(true) {
 				
 				System.out.println("Welcome to F=MA. What would you like to do. Press 1 for Signup, Press 2 for Login");
 				String command = input.nextLine(); 
@@ -75,9 +75,39 @@ public class TestDriver {
 					String password  = input.nextLine(); 
 					Student.login(username,password);
 					
+					while (Student.listOfStudents.get(Student.numStudent).isLoggedIn) {
+						System.out.println("What would you like to do. Create Post, View Post");
+						String decision  = input.nextLine(); 
+						if(decision.equalsIgnoreCase("create forum")) {
+
+							System.out.println("Enter Forum Subject");
+							String subject  = input.nextLine(); 
+							System.out.println("Enter Forum Post");
+							String forum  = input.nextLine(); 
+							Forum.listOfForums.add(Forum.getNumForums(), new Forum(subject, forum));
+
+
+						}else if (decision.equalsIgnoreCase("create comment")){
+							System.out.println("Enter Forum Subject");
+							String subject  = input.nextLine(); 
+							System.out.println("Enter Forum Post");
+							String comment  = input.nextLine(); 
+							Forum.makeComment(subject, comment);
+						}else if (decision.equalsIgnoreCase("view")){
+							System.out.println("Enter Forum Subject you want to view");
+							String subject  = input.nextLine(); 
+							System.out.println(Forum.viewForum(subject));
+
+						}else if (decision.equalsIgnoreCase("view subjects")){
+							System.out.println(Forum.viewForumSubject());
+
+						}else if (decision.equalsIgnoreCase("logout")){
+							
+							Student.listOfStudents.get(Student.numStudent).logout();
+						}
 					
 					
-					
+					}	
 				}
 				else if(command.equalsIgnoreCase("mentor login")) {
 					System.out.println("Enter username");
@@ -86,6 +116,40 @@ public class TestDriver {
 					System.out.println("Enter Password");
 					String password  = input.nextLine(); 
 					Mentor.login(username,password);
+					while (Mentor.listOfMentors.get(Mentor.numMentor).isLoggedIn) {
+						System.out.println("What would you like to do. Create Post, View Post");
+						String decision  = input.nextLine(); 
+						if(decision.equalsIgnoreCase("create forum")) {
+
+							System.out.println("Enter Forum Subject");
+							String subject  = input.nextLine(); 
+							System.out.println("Enter Forum Post");
+							String forum  = input.nextLine(); 
+							Forum.listOfForums.add(Forum.getNumForums(), new Forum(subject, forum));
+
+
+						}else if (decision.equalsIgnoreCase("create comment")){
+							System.out.println("Enter Forum Subject");
+							String subject  = input.nextLine(); 
+							System.out.println("Enter Forum Post");
+							String comment  = input.nextLine(); 
+							Forum.makeComment(subject, comment);
+						}else if (decision.equalsIgnoreCase("view")){
+							System.out.println("Enter Forum Subject you want to view");
+							String subject  = input.nextLine(); 
+							System.out.println(Forum.viewForum(subject));
+
+						}else if (decision.equalsIgnoreCase("view subjects")){
+							System.out.println(Forum.viewForumSubject());
+
+						}else if (decision.equalsIgnoreCase("logout")){
+							
+							Mentor.listOfMentors.get(Mentor.numMentor).logout();
+						}
+						
+						
+						
+					}
 					
 					
 					
@@ -114,6 +178,10 @@ public class TestDriver {
 					System.out.println("Enter Forum Subject you want to view");
 					String subject  = input.nextLine(); 
 					System.out.println(Forum.viewForum(subject));
+
+				}
+				else if (decision.equalsIgnoreCase("view subjects")){
+					System.out.println(Forum.viewForumSubject());
 
 				}
 				

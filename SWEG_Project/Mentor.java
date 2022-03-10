@@ -6,20 +6,20 @@ public class Mentor {
 	String name;
 	String password;
 	String username;
-	public static List<Mentor> listOfMentors = new ArrayList<>();
 	boolean isLoggedIn;
+	public static List<Mentor> listOfMentors = new ArrayList<>();
+	
 	static int mentorIndex=0;
+	static int numMentor=-1;
 	
 	public static int getNumMentors() {
 		return mentorIndex;
 	}
-
 	
-
-	public boolean isLoggedIn(){
-		return isLoggedIn;
-
+	public static int numMentor() {
+		return numMentor;
 	}
+	
 	
 	public Mentor(String nameInput, String usernameInput, String passwordInput) {
 		name = nameInput;
@@ -45,6 +45,7 @@ public class Mentor {
 			if (listOfMentors.get(i).getUsername().equals(usernameInput) ){
 				if (listOfMentors.get(i).getPassword().equals(passwordInput)) {
 					System.out.println("Login Successful");
+					numMentor = i;
 					listOfMentors.get(i).isLoggedIn = true;
 				}else{
 					System.out.println("Password incorrect");
@@ -63,6 +64,10 @@ public class Mentor {
 //		}
 		
 		return true;
+	}
+	
+	public void logout() {
+		listOfMentors.get(numMentor).isLoggedIn = false;
 	}
 
 }

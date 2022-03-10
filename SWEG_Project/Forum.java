@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Forum {
-
-
+	
 
     String subject;
 	String text;
@@ -82,7 +82,15 @@ public class Forum {
         return null;
 
     }
+    public static List<String> viewForumSubject(){
+    	listOfSubjects.clear();
+    	for (int i= 0; i < forumIndex; i++) {
+            System.out.println(listOfForums.get(i).getForumSubject());
+            listOfSubjects.add(listOfForums.get(i).getForumSubject());
+    	}
+    	return listOfSubjects;
+    	
+    }
 
 
-    
 }
