@@ -7,18 +7,26 @@ public class Mentor {
 	String password;
 	String username;
 	public static List<Mentor> listOfMentors = new ArrayList<>();
-	
+	boolean isLoggedIn;
 	static int mentorIndex=0;
 	
 	public static int getNumMentors() {
 		return mentorIndex;
+	}
+
+	
+
+	public boolean isLoggedIn(){
+		return isLoggedIn;
+
 	}
 	
 	public Mentor(String nameInput, String usernameInput, String passwordInput) {
 		name = nameInput;
 		password = passwordInput;
 		username = usernameInput;
-		System.out.println("Student made");
+		isLoggedIn = false;
+		System.out.println("Mentor made");
 		mentorIndex++;
 		
 	}
@@ -37,6 +45,7 @@ public class Mentor {
 			if (listOfMentors.get(i).getUsername().equals(usernameInput) ){
 				if (listOfMentors.get(i).getPassword().equals(passwordInput)) {
 					System.out.println("Login Successful");
+					listOfMentors.get(i).isLoggedIn = true;
 				}else{
 					System.out.println("Password incorrect");
 				}

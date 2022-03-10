@@ -17,11 +17,10 @@ public class TestDriver {
 //		System.out.println(listOfStudents.get(1).getPassword());
 		
 		 Scanner input = new Scanner(System.in);
-		 boolean isLoggedIn= false;
 		 
 		while(true) {
 //			int numStudents = 0;
-			if(!isLoggedIn) {
+			if(false) {
 				
 				System.out.println("Welcome to F=MA. What would you like to do. Press 1 for Signup, Press 2 for Login");
 				String command = input.nextLine(); 
@@ -78,6 +77,7 @@ public class TestDriver {
 					
 					
 					
+					
 				}
 				else if(command.equalsIgnoreCase("mentor login")) {
 					System.out.println("Enter username");
@@ -94,6 +94,30 @@ public class TestDriver {
 				
 			}else {//This is for when they are already logged in
 				System.out.println("What would you like to do. Create Post, View Post");
+				String decision  = input.nextLine(); 
+				if(decision.equalsIgnoreCase("create forum")) {
+
+					System.out.println("Enter Forum Subject");
+					String subject  = input.nextLine(); 
+					System.out.println("Enter Forum Post");
+					String forum  = input.nextLine(); 
+					Forum.listOfForums.add(Forum.getNumForums(), new Forum(subject, forum));
+
+
+				}else if (decision.equalsIgnoreCase("create comment")){
+					System.out.println("Enter Forum Subject");
+					String subject  = input.nextLine(); 
+					System.out.println("Enter Forum Post");
+					String comment  = input.nextLine(); 
+					Forum.makeComment(subject, comment);
+				}else if (decision.equalsIgnoreCase("view")){
+					System.out.println("Enter Forum Subject you want to view");
+					String subject  = input.nextLine(); 
+					System.out.println(Forum.viewForum(subject));
+
+				}
+				
+
 			}
 		}
 				
